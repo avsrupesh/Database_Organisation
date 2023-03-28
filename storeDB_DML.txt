@@ -1,0 +1,82 @@
+Insert into customer values
+ (11111,'Santosh'),(22222,'Rupesh'),(33333,'Harisson');
+
+Insert into CreditCard values
+(1245363698984545,'VISA','2924 S Princeton'),
+(1478258936984545,'Master','7878 N Illinois'),
+(1478258936987777,'Master','7878 N Illinois');
+
+
+
+Insert into Product values
+('Iphone','Phone',10),
+('Apple','Food',4),
+('Beer','Alcohol',10),
+('Chicken','Food',10);
+
+
+--YYYY-MM-DD
+Insert into OrderR values
+(123456,'Iphone',2,'Issued','2022-06-19',1478258936987777),
+(147878,'Chicken',1,'Send','2022-06-20',1245363698984545),
+(124589,'Beer',10,'Received','2022-06-20',1245363698984545);
+
+
+Insert into Warehouse values
+(1212,'35 IIT IL', 5000.25),
+(1414,'Trump tower NJ',9999.99);
+
+
+Insert into Suppliers values 
+(16458,'Pablo','123 Mexico KS'),
+(17845,'Shankar dada','444 Hyderabad IN');
+
+
+Insert into Staff values 
+(22245,'Hulk','123 Marvel',2000.25,'Level1'),
+(11112,'IronMan','333 Marvel',4000.00,'Level3'),
+(12354,'Steve','22 Captain',3333.33,'Level2');
+
+
+Insert into ProductInfo values 
+('Apple','Calories - 100'),
+('Beer','Calories - 200, Alcohol - 5%'),
+('Chicken','Calories - 300');
+
+Insert into CustomerAddress values 
+(22222,'35 IIT','2924 S Princeton'),
+(33333,'33 IIT','11 Ukraninan Village'),
+(11111,'31 IIT','404 India');
+
+
+Insert into holds values 
+(22222,1245363698984545),
+(33333,1478258936984545),
+(33333,1478258936987777);
+
+
+Insert into placeOrder values 
+('11111','123456','Iphone');
+
+Insert into addToCart values 
+('11111','Iphone',120,1),
+('22222','Beer',140,10);
+
+
+Insert into stock values
+(1212,'Iphone',100),
+(1414,'Beer',300);
+
+
+Insert into modify values 
+('Beer',11112),
+('Chicken',22245);
+
+
+Insert into sells values 
+('Iphone',16458),
+('Beer',17845);
+
+
+
+
