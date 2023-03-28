@@ -1,0 +1,120 @@
+
+/* CS425 PostgreSQL script */
+/* Group 2 */
+
+-- Use the below Query only once to create DB.
+
+-- CREATE DATABASE OnlineGrocery;
+-- /connect OnlineGrocery;
+
+
+/*The above statement makes connection to the OnlineGrocery DB.
+Instead of this command, in pgAdmin, we can do manually with right click.
+*/
+
+CREATE TABLE Customer(
+	CustomerID varchar(10) primary key,
+    CustomerName varchar(20)
+);
+CREATE TABLE CreditCard(
+	CardNum varchar(16) primary key,
+	CardIssuer varchar(20) not null,
+	BillingAddress varchar(100) not null
+);
+
+CREATE TABLE Product(
+	prodName varchar(20) primary key,
+	Category varchar(20) not null,
+	Size numeric(6,2) 
+);
+CREATE TABLE OrderR(
+	OrderID varchar(10),
+	prodName varchar(20),
+	productQty integer,
+	orderStatus char(9),
+	issueDate date not null,
+	CardNum varchar(16),
+    primary key(OrderID,prodName),
+	foreign key (prodName) references Product,
+	foreign key (CardNum) references CreditCard
+);
+CREATE TABLE Warehouse(
+	WarehouseID varchar(10) primary key,
+	Address varchar(100) not null,
+	StorageCapacity numeric(6,2)
+);
+CREATE TABLE Suppliers(
+	SupplierID varchar(10) primary key,
+	SupplierName varchar(20) not null,
+	Address varchar(100) not null
+);
+CREATE TABLE Staff(
+	StaffID varchar(10) primary key,
+	StaffName varchar(20) not null,
+	Address varchar(100) not null,
+	Salary numeric(8,2) not null,
+	JobTitle varchar(20) not null
+);
+CREATE TABLE ProductInfo(
+	prodName varchar(20),
+	AdditionalInfo varchar(50),
+	primary key(prodName,AdditionalInfo),
+	foreign key (prodName) references Product
+);
+CREATE TABLE CustomerAddress(
+	CustomerID varchar(10),
+	delivery varchar(100),
+	permanent varchar(100),
+	primary key(CustomerID,delivery,permanent),
+	foreign key (CustomerID) references Customer
+);
+CREATE TABLE holds(
+	CustomerID varchar(10),
+	CardNum varchar(16) primary key,
+	foreign key (CustomerID) references Customer,
+	foreign key (CardNum) references CreditCard
+);
+CREATE TABLE placeOrder(
+	CustomerID varchar(10),
+	OrderID varchar(10),
+    prodName varchar(20),
+	primary key(CustomerID,OrderID,prodName),
+    foreign key (prodName) references Product,
+	foreign key (CustomerID) references Customer
+);
+CREATE TABLE addToCart(
+    customerID varchar(10),
+	prodName varchar(20),
+	statePrice varchar(6) not null,
+	Quantity varchar(3) not null,
+	primary key(customerID,prodName),
+	foreign key (prodName) references Product,
+    foreign key (customerID) references Customer
+);
+CREATE TABLE stock(
+	WarehouseID varchar(10),
+	prodName varchar(20),
+	Quantity integer not null,
+	primary key(WarehouseID,prodName),
+	foreign key (prodName) references Product,
+	foreign key (WarehouseID) references Warehouse
+);
+CREATE TABLE modify(
+	prodName varchar(20),
+	StaffID varchar(10),
+	primary key(prodName,StaffID),
+	foreign key (StaffID) references Staff,
+	foreign key (prodName) references Product
+);
+CREATE TABLE sells(
+	prodName varchar(20),
+	SupplierID varchar(10),
+	supplierPrice integer not null,
+	primary key(prodName,SupplierID),
+	foreign key (SupplierID) references Suppliers,
+	foreign key (prodName) references Product
+);
+
+
+
+
